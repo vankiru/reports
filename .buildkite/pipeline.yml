@@ -1,0 +1,28 @@
+env:
+  BUNDLE_PATH: vendor/bundle
+
+steps:
+  - label: ":ruby: Install gems"
+    command: "bundle install"
+    key: "gems"
+    plugins:
+      - docker#v5.9.0:
+          image: "ruby:3.3"
+          environment:
+            - BUNDLE_PATH
+      - artifacts#v1.9.3:
+          upload: "$BUNDLE_PATH"
+          compressed: $BUNDLE_PATH.tgz
+
+  - label: ":rspec: Run rspec"
+    command: "bundle exec rspec"
+    depends_on: "gems"
+    plugins:
+      - docker#v5.9.0:
+          image: "ruby:3.3"
+          environment:
+            - BUNDLE_PATH
+      - artifacts#v1.9.3:
+          download: "$BUNDLE_PATH"
+          compressed: $BUNDLE_PATH.tgz
+

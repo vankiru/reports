@@ -14,10 +14,14 @@ module Reports
       end
     end
 
-    def initialize(data)
-      @data = data
+    attr_reader :params
+
+    def initialize(params)
+      @params = params
     end
 
-    def render(options); end
+    def render(options)
+      Renderer.new(self).render(options)
+    end
   end
 end
