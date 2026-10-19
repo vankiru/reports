@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Julia Egorova']
   spec.email         = ['j.e.egorova@gmail.com']
 
-  spec.summary       = 'Summary'
+  spec.summary       = 'Tabular reports'
   spec.description   = 'Description'
   spec.homepage      = 'https://github.com/Vankiru/reports'
   spec.license       = 'MIT'
